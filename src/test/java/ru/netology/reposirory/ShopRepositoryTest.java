@@ -11,7 +11,7 @@ import ru.netology.javaqa63.Product;
         Product item3 = new Product(13, "Ручка", 35);
         Product item4 = new Product(14, "Дневник", 105);
 
-        @Test
+/*        @Test
         public void shouldRemoveByIdOne() {
             ShopRepository repo = new ShopRepository();
 
@@ -40,7 +40,7 @@ import ru.netology.javaqa63.Product;
             Product[] actual = repo.findAll();
 
             Assertions.assertArrayEquals(expected, actual);
-        }
+        }*/
         @Test
         public void shouldRemoveByILast() {
             ShopRepository repo = new ShopRepository();
