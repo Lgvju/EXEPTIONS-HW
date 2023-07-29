@@ -1,10 +1,13 @@
 package ru.netology.reposirory;
 
+import ru.netology.javaqa63.AlreadyExistsException;
 import ru.netology.javaqa63.NotFoundException;
 import ru.netology.javaqa63.Product;
 
 public class ShopRepository {
     private Product[] products = new Product[0];
+    public int id;
+
 
     /**
      * Вспомогательный метод для имитации добавления элемента в массив
@@ -29,8 +32,16 @@ public class ShopRepository {
      * @param product — добавляемый товар
      */
     public void add(Product product) {
-        products = addToArray(products, product);
+        if (findById(product.getId()) != null) {//вызывает метод `findById` с аргументом `product.getId()`, который возвращает товар с соответствующим ID из репозитория. Если товар с таким ID не найден, метод `findById` возвращает `null`.
+            //проверяет, найден ли в репозитории товар с таким же ID, как у добавляемого товара `product`.
+            throw new AlreadyExistsException(
+                    "Element with id: " + id + " already found"
+            );
+        } else {
+            products = addToArray(products, product);
+        }
     }
+
 
     public Product[] findAll() {
         return products;
@@ -62,4 +73,6 @@ public class ShopRepository {
         }
         return null;
     }
+
+
 }
